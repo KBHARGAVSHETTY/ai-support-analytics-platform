@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI-Powered Support & Analytics Platform</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <!-- Chart.js from CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Support Ticket System</h1>
+        
+        <!-- Statistics Cards -->
+        <div class="stats-section" id="stats-section">
+            <h2>Statistics</h2>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <h3>Total Tickets</h3>
+                    <p id="total-tickets">0</p>
+                </div>
+                <div class="stat-card">
+                    <h3>Open Tickets</h3>
+                    <p id="open-tickets">0</p>
+                </div>
+                <div class="stat-card">
+                    <h3>Resolved Tickets</h3>
+                    <p id="resolved-tickets">0</p>
+                </div>
+                <div class="stat-card">
+                    <h3>High Priority Tickets</h3>
+                    <p id="high-priority-tickets">0</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Charts Section -->
+        <div class="charts-section" id="charts-section">
+            <h2>Charts</h2>
+            <div class="chart-container">
+                <canvas id="category-chart" width="400" height="200"></canvas>
+            </div>
+            <div class="chart-container">
+                <canvas id="priority-chart" width="400" height="200"></canvas>
+            </div>
+        </div>
+        
+        <!-- AI Chat Section -->
+        <div class="chat-section" id="chat-section">
+            <h2>AI Support Assistant</h2>
+            <div id="chat-messages">
+                <div class="message bot-message">
+                    Hello! I'm your AI support assistant. I can help you with common support questions and provide statistics about your support tickets. How can I assist you today?
+                </div>
+            </div>
+            <div class="chat-input-container">
+                <form id="chat-form">
+                    <input type="text" id="chat-input" placeholder="Ask me a question..." required>
+                    <button type="submit">Send</button>
+                </form>
+            </div>
+        </div>
+        
+        <!-- Ticket Form -->
+        <div class="form-section">
+            <h2>Create New Ticket</h2>
+            <form id="ticket-form">
+                <div class="form-group">
+                    <label for="title">Title:</label>
+                    <input type="text" id="title" name="title" required>
+                </div>
+                <div class="form-group">
+                    <label for="description">Description:</label>
+                    <textarea id="description" name="description" rows="4" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="category">Category:</label>
+                    <select id="category" name="category" required>
+                        <option value="">Select Category</option>
+                        <option value="Authentication">Authentication</option>
+                        <option value="Billing">Billing</option>
+                        <option value="UI/UX">UI/UX</option>
+                        <option value="Performance">Performance</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="priority">Priority:</label>
+                    <select id="priority" name="priority" required>
+                        <option value="">Select Priority</option>
+                        <option value="Low">Low</option>
+                        <option value="Medium">Medium</option>
+                        <option value="High">High</option>
+                        <option value="Critical">Critical</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="status">Status:</label>
+                    <select id="status" name="status">
+                        <option value="Open">Open</option>
+                        <option value="In Progress">In Progress</option>
+                        <option value="Resolved">Resolved</option>
+                        <option value="Closed">Closed</option
+                    </select>
+                </div>
+                <button type="submit">Submit Ticket</button>
+                <div id="form-message"></div>
+            </form>
+        </div>
+        
+        <!-- Tickets Table -->
+        <div class="table-section">
+            <h2>Tickets</h2>
+            <table id="tickets-table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Title</th>
+                        <th>Category</th>
+                        <th>Priority</th>
+                        <th>Status</th>
+                        <th>Created At</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Tickets will be populated by JavaScript -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
